@@ -1,3 +1,5 @@
+package task;
+
 public class Task {
 
     private int id;
@@ -35,6 +37,35 @@ public class Task {
 
     public void setStatus(TaskStatus status) {
         this.status = status;
+    }
+
+    public Task(int id) {
+        this.id = id;
+    }
+
+    public Task(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
+    public Task(int id, String name, String description, TaskStatus status) {
+        this.name = name;
+        this.description = description;
+        this.id = id;
+        this.status = status;
+    }
+
+    public Task(int id, String name, String description) {
+        this.name = name;
+        this.description = description;
+        this.id = id;
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Task task = (Task) o;
+        return id == task.id && name.equals(task.name) && description.equals(task.description);
     }
 
     @Override
