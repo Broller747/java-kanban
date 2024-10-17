@@ -80,19 +80,6 @@ public class TaskManager {
         actualizeEpicStatus(epicId);
     }
 
-
-    public ArrayList<Task> printAllTasks() {
-        return getTasks();
-    }
-
-    public ArrayList<Epic> printAllEpics() {
-        return getEpics();
-    }
-
-    public ArrayList<SubTask> printAllSubTasks() {
-        return getSubTasks();
-    }
-
     public void deleteAllTasks() {
         tasks.clear();
     }
@@ -159,8 +146,20 @@ public class TaskManager {
         actualizeEpicStatus(epic.getId());
     }
 
+    public ArrayList<Task> getTasks() {
+        return new ArrayList<>(tasks.values());
+    }
 
-    public void actualizeEpicStatus(int id) {
+
+    public ArrayList<Epic> getEpics() {
+        return new ArrayList<>(epics.values());
+    }
+
+    public ArrayList<SubTask> getSubTasks() {
+        return new ArrayList<>(subTasks.values());
+    }
+
+    private void actualizeEpicStatus(int id) {
         int counterNew = 0;
         int counterDone = 0;
         int counter = 0;
@@ -183,18 +182,4 @@ public class TaskManager {
             epic.setStatus(TaskStatus.IN_PROGRESS);
         }
     }
-
-    public ArrayList<Task> getTasks() {
-        return new ArrayList<>(tasks.values());
-    }
-
-
-    public ArrayList<Epic> getEpics() {
-        return new ArrayList<>(epics.values());
-    }
-
-    public ArrayList<SubTask> getSubTasks() {
-        return new ArrayList<>(subTasks.values());
-    }
-
 }

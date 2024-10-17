@@ -29,7 +29,7 @@ public class Main {
         System.out.println("____________________");
 
         System.out.println("Список задач");
-        System.out.println(taskManager.printAllTasks());
+        System.out.println(taskManager.getTasks());
 
         System.out.println("____________________");
         System.out.println("Создание эпиков");
@@ -46,7 +46,7 @@ public class Main {
         System.out.println("____________________");
 
         System.out.println("Список эпиков");
-        System.out.println(taskManager.printAllEpics());
+        System.out.println(taskManager.getEpics());
         System.out.println("____________________");
 
         System.out.println("Создание Подзадач");
@@ -64,7 +64,7 @@ public class Main {
         System.out.println("____________________");
 
         System.out.println("Список подзадач");
-        System.out.println(taskManager.printAllSubTasks());
+        System.out.println(taskManager.getSubTasks());
         System.out.println("____________________");
 
         System.out.println("Изменение подзадачи");
@@ -109,21 +109,21 @@ public class Main {
         System.out.println("____________________");
 
         System.out.println("Удаление всех задач");
-        System.out.println(taskManager.printAllTasks());
+        System.out.println(taskManager.getTasks());
         taskManager.deleteAllTasks();
-        System.out.println(taskManager.printAllTasks());
+        System.out.println(taskManager.getTasks());
         System.out.println("____________________");
 
         System.out.println("Удаление всех подзадач");
-        System.out.println(taskManager.printAllSubTasks());
+        System.out.println(taskManager.getSubTasks());
         taskManager.deleteAllSubTasks();
-        System.out.println(taskManager.printAllSubTasks());
+        System.out.println(taskManager.getSubTasks());
         System.out.println("____________________");
 
         System.out.println("Удаление всех эпиков");
-        System.out.println(taskManager.printAllEpics());
+        System.out.println(taskManager.getEpics());
         taskManager.deleteAllEpics();
-        System.out.println(taskManager.printAllEpics());
+        System.out.println(taskManager.getEpics());
         System.out.println("____________________");
 
     }
