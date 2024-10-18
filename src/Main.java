@@ -1,4 +1,4 @@
-import manager.TaskManager;
+import manager.*;
 import task.Epic;
 import task.SubTask;
 import task.Task;
@@ -8,8 +8,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        TaskManager taskManager = new TaskManager();
-
+           TaskManager taskManager = Managers.getDefault();
+        HistoryManager historyManager = Managers.getDefaultHistory();
 
         System.out.println("____________________");
         System.out.println("Создание задач");
@@ -20,6 +20,7 @@ public class Main {
         Task task1 = new Task("Цветы", "Полить цветы");
         int idTask2 = taskManager.addTask(task1);
         System.out.println(taskManager.getTask(idTask2));
+
 
         System.out.println("____________________");
         System.out.println("Изменение задачи");
@@ -68,8 +69,8 @@ public class Main {
         System.out.println("____________________");
 
         System.out.println("Изменение подзадачи");
-        SubTask subTask4 = new SubTask(subTask2.getId(), "Готовка", "Приготовить еду",
-                TaskStatus.IN_PROGRESS);
+        SubTask subTask4 = new SubTask(subTask2.getId(), "Готовка", "Приготовить еду"
+        );
         subTask4.setEpicId(idEpic);
         taskManager.updateSubtask(subTask4);
         System.out.println(taskManager.getSubTask(idSubTask2));
@@ -91,6 +92,12 @@ public class Main {
         Epic epic3 = new Epic(idEpic2, "Готовка", "Приготовить еду");
         taskManager.updateEpic(epic3);
         System.out.println(taskManager.getEpic(idEpic2));
+        System.out.println("____________________");
+
+        System.out.println("История последних 10 просмотров");
+        for (Task i:  historyManager.getHistory()) {
+            System.out.println(i);
+        }
         System.out.println("____________________");
 
         taskManager.deleteTask(idTask);
