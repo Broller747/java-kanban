@@ -8,7 +8,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-           TaskManager taskManager = Managers.getDefault();
+        TaskManager taskManager = Managers.getDefault();
         HistoryManager historyManager = Managers.getDefaultHistory();
 
         System.out.println("____________________");
@@ -95,7 +95,7 @@ public class Main {
         System.out.println("____________________");
 
         System.out.println("История последних 10 просмотров");
-        for (Task i:  historyManager.getHistory()) {
+        for (Task i : historyManager.getHistory()) {
             System.out.println(i);
         }
         System.out.println("____________________");
