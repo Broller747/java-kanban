@@ -25,7 +25,7 @@ public class InMemoryHistoryManagerTest {
     void add() {
         Task task = new Task("Уборка", "Убрать квартиру");
         historyManager.add(task);
-      List<Task> history= historyManager.getHistory();
+        List<Task> history = historyManager.getHistory();
         assertNotNull(history.size(), "История не пустая.");
         assertEquals(1, history.size(), "История не пустая.");
 
@@ -38,7 +38,7 @@ public class InMemoryHistoryManagerTest {
         int idTask = taskManager.addTask(task5);
         historyManager.add(task5);
         assertEquals(TaskStatus.NEW, task5.getStatus(), "Должны совпадать");
-        Task task3 = new Task(idTask,"Task1", "Description1",TaskStatus.DONE);
+        Task task3 = new Task(idTask, "Task1", "Description1", TaskStatus.DONE);
         taskManager.updateTask(task3);
         assertEquals(TaskStatus.NEW, historyManager.getHistory().get(0).getStatus(), "Должны совпадать");
     }
