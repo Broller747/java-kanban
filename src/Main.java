@@ -22,7 +22,10 @@ public class Main {
         Task task1 = new Task("Цветы", "Полить цветы");
         int idTask2 = taskManager.addTask(task1);
         System.out.println(taskManager.getTask(idTask2));
+<<<<<<< HEAD
         System.out.println(historyManager.getHistory());
+=======
+>>>>>>> 61b941f8befc5f0ab80ec58aa154c367794cb8f1
 
         System.out.println("____________________");
         System.out.println("Изменение задачи");

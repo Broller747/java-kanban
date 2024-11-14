@@ -91,7 +91,11 @@ public class InMemoryHistoryManager implements HistoryManager {
                 remove(task.getId());
                 linkLast(copy);
             } else {
+
                 linkLast(task);
+
+                linkLast(copy);
+
             }
         }
     }
