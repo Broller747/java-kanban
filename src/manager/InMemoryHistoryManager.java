@@ -15,7 +15,7 @@ public class InMemoryHistoryManager implements HistoryManager {
 
 
     private void linkLast(Task task) {
-        if (tail == null) {
+        if (head == null) {
             head = new Node(null, task, null);
             history.put(task.getId(), head);
         } else {
@@ -91,10 +91,7 @@ public class InMemoryHistoryManager implements HistoryManager {
                 remove(task.getId());
                 linkLast(copy);
             } else {
-
                 linkLast(task);
-
-                linkLast(copy);
 
             }
         }
