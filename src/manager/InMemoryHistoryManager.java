@@ -29,6 +29,7 @@ public class InMemoryHistoryManager implements HistoryManager {
 
     private List<Task> getTasks() {
         List<Task> ArrayHistory = new ArrayList<>();
+        Node Next=null;
         if (head == null) {
             System.out.println("История пуста");
             return ArrayHistory;
@@ -39,8 +40,8 @@ public class InMemoryHistoryManager implements HistoryManager {
             Node temp = head.next;
             ArrayHistory.add(head.element);
             ArrayHistory.add(temp.element);
-            while (temp.next != null) {
-                temp = temp.next;
+            while (Next != null) {
+                Next = temp.next;
                 ArrayHistory.add(temp.element);
             }
             return ArrayHistory;

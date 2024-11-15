@@ -24,7 +24,7 @@ public class Main {
 
         System.out.println("____________________");
         System.out.println("Вывод истории задач");
-        System.out.println(historyManager.getHistory());
+        System.out.println(taskManager.getHistory());
 
         System.out.println("____________________");
         System.out.println("Изменение задачи");

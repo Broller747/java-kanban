@@ -25,6 +25,7 @@ public class InMemoryHistoryManagerTest {
     void add() {
         Task task = new Task("Уборка", "Убрать квартиру");
         historyManager.add(task);
+        System.out.println(historyManager.getHistory() +"sdsdasdsa");
         List<Task> history = historyManager.getHistory();
         assertNotNull(history.size(), "История не пустая.");
         assertEquals(1, history.size(), "История не пустая.");
