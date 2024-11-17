@@ -9,7 +9,6 @@ public class Main {
     public static void main(String[] args) {
 
         TaskManager taskManager = Managers.getDefault();
-        HistoryManager historyManager = Managers.getDefaultHistory();
 
         System.out.println("____________________");
         System.out.println("Создание задач");
