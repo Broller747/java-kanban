@@ -30,19 +30,19 @@ public class InMemoryHistoryManager implements HistoryManager {
     }
 
     private List<Task> getTasks() {
-        List<Task> ArrayHistory = new ArrayList<>();
+        List<Task> arrayHistory = new ArrayList<>();
         if (head == null) {
             System.out.println("История пуста");
-            return ArrayHistory;
+            return arrayHistory;
         } else if (tail == null) {
-            ArrayHistory.add(head.element);
-            return ArrayHistory;
+            arrayHistory.add(head.element);
+            return arrayHistory;
         } else {
             for (Node tempTask : history.values()) {
-                ArrayHistory.add(tempTask.element);
+                arrayHistory.add(tempTask.element);
             }
 
-            return ArrayHistory;
+            return arrayHistory;
         }
 
     }
@@ -52,7 +52,7 @@ public class InMemoryHistoryManager implements HistoryManager {
         Node selectPrev = delNode.prev;
         Node selectNext = delNode.next;
         if (delNode.prev == null && delNode.next == null) {
-
+            System.out.println("Удаление последнего элемента");
         } else if (delNode.prev == null) {
             selectNext.prev = null;
             head = selectNext;
