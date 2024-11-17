@@ -111,8 +111,8 @@ public class InMemoryTaskManager implements TaskManager {
         subTasks.clear();
     }
 
-    public ArrayList<Task> getHistory(){
-       return (ArrayList<Task>) historyManager.getHistory();
+    public ArrayList<Task> getHistory() {
+        return (ArrayList<Task>) historyManager.getHistory();
     }
 
     @Override

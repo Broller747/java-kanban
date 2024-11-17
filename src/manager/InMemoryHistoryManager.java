@@ -38,7 +38,7 @@ public class InMemoryHistoryManager implements HistoryManager {
             ArrayHistory.add(head.element);
             return ArrayHistory;
         } else {
-            for (Node tempTask: history.values()){
+            for (Node tempTask : history.values()) {
                 ArrayHistory.add(tempTask.element);
             }
 
@@ -82,7 +82,7 @@ public class InMemoryHistoryManager implements HistoryManager {
 
     @Override
     public void add(Task task) {
-        if (task ==null) {
+        if (task == null) {
             System.out.println("Пустая задача.");
         } else {
             Task copy = task;

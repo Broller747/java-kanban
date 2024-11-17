@@ -42,20 +42,21 @@ public class InMemoryHistoryManagerTest {
         taskManager.updateTask(task3);
         assertEquals(TaskStatus.NEW, historyManager.getHistory().get(0).getStatus(), "Должны совпадать");
     }
-@Test
-    void add_shouldRemoveTask(){
-    Task task = new Task("1", "Описание 1");
-    taskManager.addTask(task);
-    historyManager.add(task);
-    Task task2 = new Task("2", "Описание 2");
-    taskManager.addTask(task2);
-    historyManager.add(task2);
-    historyManager.remove(task.getId());
-    assertEquals(1, historyManager.getHistory().size(), "Должны совпадать");
-}
 
     @Test
-    void add_shouldRemoveLastTask(){
+    void add_shouldRemoveTask() {
+        Task task = new Task("1", "Описание 1");
+        taskManager.addTask(task);
+        historyManager.add(task);
+        Task task2 = new Task("2", "Описание 2");
+        taskManager.addTask(task2);
+        historyManager.add(task2);
+        historyManager.remove(task.getId());
+        assertEquals(1, historyManager.getHistory().size(), "Должны совпадать");
+    }
+
+    @Test
+    void add_shouldRemoveLastTask() {
         Task task = new Task("1", "Описание 1");
         taskManager.addTask(task);
         historyManager.add(task);
@@ -67,7 +68,7 @@ public class InMemoryHistoryManagerTest {
     }
 
     @Test
-    void add_shouldRemoveMidTask(){
+    void add_shouldRemoveMidTask() {
         Task task = new Task("1", "Описание 1");
         taskManager.addTask(task);
         historyManager.add(task);
