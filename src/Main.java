@@ -98,8 +98,10 @@ public class Main {
         System.out.println(taskManager.getEpic(idEpic2));
         System.out.println("____________________");
 
+
+
         System.out.println("История просмотров");
-        for (Task i : historyManager.getHistory()) {
+        for (Task i : taskManager.getHistory()) {
             System.out.println(i);
         }
         System.out.println("____________________");

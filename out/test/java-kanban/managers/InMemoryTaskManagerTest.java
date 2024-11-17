@@ -76,7 +76,7 @@ class InMemoryTaskManagerTest {
 
         Epic epic1 = new Epic("Epic1", "Description1");
         int idEpic = taskManager.addEpic(epic1);
-        assertEquals(epic1, taskManager.getTask(idEpic), "Должны совпадать");
+        assertEquals(epic1, taskManager.getEpic(idEpic), "Должны совпадать");
 
         SubTask subTask1 = new SubTask("Subtask1", "Description1", epic1.getId());
         int idSubTask = taskManager.addNewSubtask(subTask1);

@@ -20,16 +20,17 @@ public class InMemoryHistoryManager implements HistoryManager {
             history.put(task.getId(), head);
         } else {
             tail = new Node(history.get(lastId), task, null);
-            Node tempNode = history.get(lastId);
-            tempNode.next = tail;
             history.put(task.getId(), tail);
+            Node tempNode = history.get(lastId);
+
+            tempNode.next = tail;
+
         }
         lastId = task.getId();
     }
 
     private List<Task> getTasks() {
         List<Task> ArrayHistory = new ArrayList<>();
-        Node Next=null;
         if (head == null) {
             System.out.println("История пуста");
             return ArrayHistory;
@@ -37,13 +38,10 @@ public class InMemoryHistoryManager implements HistoryManager {
             ArrayHistory.add(head.element);
             return ArrayHistory;
         } else {
-            Node temp = head.next;
-            ArrayHistory.add(head.element);
-            ArrayHistory.add(temp.element);
-            while (Next != null) {
-                Next = temp.next;
-                ArrayHistory.add(temp.element);
+            for (Node tempTask: history.values()){
+                ArrayHistory.add(tempTask.element);
             }
+
             return ArrayHistory;
         }
 
