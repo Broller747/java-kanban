@@ -7,6 +7,7 @@ import task.TaskStatus;
 
 import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class InMemoryTaskManager implements TaskManager {
@@ -111,8 +112,8 @@ public class InMemoryTaskManager implements TaskManager {
         subTasks.clear();
     }
 
-    public ArrayList<Task> getHistory() {
-        return (ArrayList<Task>) historyManager.getHistory();
+    public List<Task> getHistory() {
+        return historyManager.getHistory();
     }
 
     @Override
