@@ -25,7 +25,7 @@ public class InMemoryHistoryManagerTest {
     void add() {
         Task task = new Task("Уборка", "Убрать квартиру");
         historyManager.add(task);
-      List<Task> history= historyManager.getHistory();
+        List<Task> history = historyManager.getHistory();
         assertNotNull(history.size(), "История не пустая.");
         assertEquals(1, history.size(), "История не пустая.");
 
@@ -38,10 +38,49 @@ public class InMemoryHistoryManagerTest {
         int idTask = taskManager.addTask(task5);
         historyManager.add(task5);
         assertEquals(TaskStatus.NEW, task5.getStatus(), "Должны совпадать");
-        Task task3 = new Task(idTask,"Task1", "Description1",TaskStatus.DONE);
+        Task task3 = new Task(idTask, "Task1", "Description1", TaskStatus.DONE);
         taskManager.updateTask(task3);
         assertEquals(TaskStatus.NEW, historyManager.getHistory().get(0).getStatus(), "Должны совпадать");
     }
 
+    @Test
+    void add_shouldRemoveTask() {
+        Task task = new Task("1", "Описание 1");
+        taskManager.addTask(task);
+        historyManager.add(task);
+        Task task2 = new Task("2", "Описание 2");
+        taskManager.addTask(task2);
+        historyManager.add(task2);
+        historyManager.remove(task.getId());
+        assertEquals(1, historyManager.getHistory().size(), "Должны совпадать");
+    }
 
+    @Test
+    void add_shouldRemoveLastTask() {
+        Task task = new Task("1", "Описание 1");
+        taskManager.addTask(task);
+        historyManager.add(task);
+        Task task2 = new Task("2", "Описание 2");
+        taskManager.addTask(task2);
+        historyManager.add(task2);
+        historyManager.remove(task2.getId());
+        assertEquals(task, historyManager.getHistory().getLast(), "Должны совпадать");
+    }
+
+    @Test
+    void add_shouldRemoveMidTask() {
+        Task task = new Task("1", "Описание 1");
+        taskManager.addTask(task);
+        historyManager.add(task);
+        Task task2 = new Task("2", "Описание 2");
+        taskManager.addTask(task2);
+        historyManager.add(task2);
+        Task task3 = new Task("3", "Описание 3");
+        taskManager.addTask(task3);
+        historyManager.add(task3);
+        historyManager.remove(task2.getId());
+        assertEquals(2, historyManager.getHistory().size(), "Должны совпадать");
+        assertEquals(task, historyManager.getHistory().getFirst(), "Должны совпадать");
+        assertEquals(task3, historyManager.getHistory().getLast(), "Должны совпадать");
+    }
 }

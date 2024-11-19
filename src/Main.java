@@ -9,7 +9,6 @@ public class Main {
     public static void main(String[] args) {
 
         TaskManager taskManager = Managers.getDefault();
-        HistoryManager historyManager = Managers.getDefaultHistory();
 
         System.out.println("____________________");
         System.out.println("Создание задач");
@@ -17,10 +16,14 @@ public class Main {
         int idTask = taskManager.addTask(task);
         System.out.println(taskManager.getTask(idTask));
 
+
         Task task1 = new Task("Цветы", "Полить цветы");
         int idTask2 = taskManager.addTask(task1);
         System.out.println(taskManager.getTask(idTask2));
 
+        System.out.println("____________________");
+        System.out.println("Вывод истории задач");
+        System.out.println(taskManager.getHistory());
 
         System.out.println("____________________");
         System.out.println("Изменение задачи");
@@ -94,8 +97,9 @@ public class Main {
         System.out.println(taskManager.getEpic(idEpic2));
         System.out.println("____________________");
 
-        System.out.println("История последних 10 просмотров");
-        for (Task i : historyManager.getHistory()) {
+
+        System.out.println("История просмотров");
+        for (Task i : taskManager.getHistory()) {
             System.out.println(i);
         }
         System.out.println("____________________");

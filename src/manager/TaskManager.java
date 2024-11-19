@@ -46,4 +46,6 @@ public interface TaskManager {
 
     List<SubTask> getSubTasks();
 
+    List<Task> getHistory();
+
 }

@@ -7,6 +7,7 @@ import task.TaskStatus;
 
 import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class InMemoryTaskManager implements TaskManager {
@@ -109,6 +110,10 @@ public class InMemoryTaskManager implements TaskManager {
             delete.setStatus(TaskStatus.NEW);
         }
         subTasks.clear();
+    }
+
+    public List<Task> getHistory() {
+        return historyManager.getHistory();
     }
 
     @Override
