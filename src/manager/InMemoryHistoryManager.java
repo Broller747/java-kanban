@@ -11,40 +11,54 @@ public class InMemoryHistoryManager implements HistoryManager {
     private final Map<Integer, Node> history = new HashMap<>();
     private Node head;
     private Node tail;
-    private int lastId = 0;
 
 
-    private void linkLast(Task task) {
-        if (head == null) {
-            head = new Node(null, task, null);
-            history.put(task.getId(), head);
-        } else {
-            tail = new Node(history.get(lastId), task, null);
-            history.put(task.getId(), tail);
-            Node tempNode = history.get(lastId);
-
-            tempNode.next = tail;
-
-        }
-        lastId = task.getId();
+    @Override
+    public List<Task> getHistory() {
+        return getTasks();
     }
 
-    private List<Task> getTasks() {
-        List<Task> arrayHistory = new ArrayList<>();
-        if (head == null) {
-            System.out.println("История пуста");
-            return arrayHistory;
-        } else if (tail == null) {
-            arrayHistory.add(head.element);
-            return arrayHistory;
-        } else {
-            for (Node tempTask : history.values()) {
-                arrayHistory.add(tempTask.element);
-            }
+    @Override
+    public void remove(int id) {
 
-            return arrayHistory;
+        final Node node = history.remove(id);
+        if (node == null) {
+            return;
         }
+        removeNode(node);
 
+    }
+
+    @Override
+    public void add(Task task) {
+
+        if (task == null) {
+            return;
+        }
+        final int id = task.getId();
+        remove(id);
+        linkLast(task);
+        history.put(id, tail);
+    }
+
+    private void linkLast(Task task) {
+        final Node node = new Node(tail, task, null);
+        if (head == null) {
+            head = node;
+        } else {
+            tail.next = node;
+        }
+        tail = node;
+    }
+
+    private ArrayList<Task> getTasks() {
+        ArrayList<Task> tasks = new ArrayList<>();
+        Node node = head;
+        for (int i = 0; i < history.size(); i++) {
+            tasks.add(node.element);
+            node = node.next;
+        }
+        return tasks;
     }
 
 
@@ -56,45 +70,12 @@ public class InMemoryHistoryManager implements HistoryManager {
         } else if (delNode.prev == null) {
             selectNext.prev = null;
             head = selectNext;
-        } else if (delNode == null) {
-            selectPrev.next = null;
-            tail = selectPrev;
         } else {
             selectPrev.next = selectNext;
             selectNext.prev = selectPrev;
         }
     }
 
-    @Override
-    public List<Task> getHistory() {
-        return getTasks();
-    }
-
-    @Override
-    public void remove(int id) {
-        if (history.containsKey(id)) {
-            Node removeNode = history.remove(id);
-            removeNode(removeNode);
-        } else {
-            System.out.println("Id не найден.");
-        }
-    }
-
-    @Override
-    public void add(Task task) {
-        if (task == null) {
-            System.out.println("Пустая задача.");
-        } else {
-            Task copy = task;
-            if (history.containsKey(task.getId())) {
-                remove(task.getId());
-                linkLast(copy);
-            } else {
-                linkLast(task);
-
-            }
-        }
-    }
 
     private static class Node {
         private Node next;
