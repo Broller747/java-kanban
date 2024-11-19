@@ -47,9 +47,11 @@ public class InMemoryHistoryManager implements HistoryManager {
             head = node;
         } else {
             tail.next = node;
+            node.prev = tail;
         }
         tail = node;
     }
+
 
     private ArrayList<Task> getTasks() {
         ArrayList<Task> tasks = new ArrayList<>();
@@ -75,7 +77,6 @@ public class InMemoryHistoryManager implements HistoryManager {
             selectNext.prev = selectPrev;
         }
     }
-
 
     private static class Node {
         private Node next;
